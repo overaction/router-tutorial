@@ -1,10 +1,15 @@
 import React from 'react';
-
-const About = () => {
+import qs from 'qs';
+const About = ({location}) => {
+    const query = qs.parse(location.search, {
+        ignoreQueryPrefix: true
+    });
+    const showDetail = query.detail === 'true';
     return (
         <div>
             <h1>소개</h1>
             <p>리액트 라우터</p>
+            {showDetail && <p>detail is true</p>}
         </div>
     )
 }
